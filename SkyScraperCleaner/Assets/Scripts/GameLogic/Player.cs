@@ -49,7 +49,7 @@ public class Player : MonoBehaviour
     }
     private void resetPosition()
     {
-        transform.position = new Vector3(-28, 7, -13);
+        transform.position = new Vector3(-28, 5, -12);
         Vector3 lookAt =new Vector3();
         lookAt = m_LookAtMeWindow.transform.position;
         lookAt.x -= 0.3f;
