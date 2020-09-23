@@ -2,12 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class Player : MonoBehaviour
 {
     [SerializeField]
     private GameObject m_LookAtMeWindow;
 
     private Transform m_selection;
+    [SerializeField]
+    private float m_Speed = 20;
+    private float m_Time;
     // Start is called before the first frame update
     void Start()
     {
@@ -36,12 +40,18 @@ public class Player : MonoBehaviour
                 {
                     if (Input.anyKeyDown && this.transform.position.y < 43)
                     {
+                        m_Time += Time.deltaTime * m_Speed;
                         Debug.Log("Moving up!!!");
-                        Vector3 movementChange = new Vector3();
-                        movementChange += (hit.transform.position - transform.position);
+                        Debug.Log("hit: " + hit.transform.position);
+                        Vector3 movementChange= (hit.transform.position - transform.position);;
+                        // movementChange *= 20;
                         movementChange.z = 0;
+                        movementChange.x = 0;
+                        //movementChange.x *= 1.2f;
+                        // movementChange = -movementChange;
                         movementChange *= 0.05f;
-                        this.transform.position -= movementChange;
+                        Debug.Log("to: " + movementChange);
+                      transform.position -= movementChange;
                     }
                 }
                 else if (selection.CompareTag("DirtyWindow"))
