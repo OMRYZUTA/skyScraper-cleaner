@@ -1,5 +1,0 @@
-sceneSetups:
-- path: C:/Users/hadar/source/repos/skyScraper-cleaner/SkyScraperCleaner/Assets/GoogleVR/Beta/Demos/Scenes/HelloMR.unity
-  isLoaded: 1
-  isActive: 1
-  isSubScene: 0

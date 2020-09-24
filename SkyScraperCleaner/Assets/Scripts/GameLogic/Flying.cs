@@ -172,7 +172,7 @@ public class Flying : MonoBehaviour
 
         if(newState != currAnim)
         {
-            animator.SetFloat("flySpeed", newState);
+            //animator.SetFloat("flySpeed", newState);
             if (newState == 0)
             {
                 animator.speed = 1f;

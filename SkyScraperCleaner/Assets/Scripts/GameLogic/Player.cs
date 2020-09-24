@@ -40,15 +40,11 @@ public class Player : MonoBehaviour
                 {
                     if (Input.anyKeyDown && this.transform.position.y < 43)
                     {
-                        m_Time += Time.deltaTime * m_Speed;
                         Debug.Log("Moving up!!!");
                         Debug.Log("hit: " + hit.transform.position);
                         Vector3 movementChange= (hit.transform.position - transform.position);;
-                        // movementChange *= 20;
                         movementChange.z = 0;
                         movementChange.x = 0;
-                        //movementChange.x *= 1.2f;
-                        // movementChange = -movementChange;
                         movementChange *= 0.05f;
                         Debug.Log("to: " + movementChange);
                       transform.position -= movementChange;
@@ -58,7 +54,7 @@ public class Player : MonoBehaviour
                 {
                     if (Input.anyKeyDown)
                     {
-
+                        Debug.Log("splash water!");
                     }
                 }
             }
