@@ -11,7 +11,7 @@ public class DirtyWindow : MonoBehaviour
     void Start()
     {
         System.Random rand= new System.Random();
-        m_NumOfHitsToClean = rand.Next(1, 7);
+        m_NumOfHitsToClean = rand.Next(1, 5);
     }
 
     // Update is called once per frame
@@ -27,6 +27,7 @@ public class DirtyWindow : MonoBehaviour
         {
             MeshRenderer myMesh = GetComponent<MeshRenderer>();
             myMesh.enabled = false;
+            Destroy(this);
         }
     }
 

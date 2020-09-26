@@ -46,6 +46,7 @@ public class WaterPistol : MonoBehaviour
                 Debug.Log("Splahing water!");
                 Vector3 createInPosition = transform.position -transform.forward;
                 createInPosition.y += 1;
+                createInPosition.x += 0.8f;
                 GameObject clone =Instantiate(m_Shot, createInPosition , Quaternion.identity);
                 clone.GetComponent<Rigidbody>().AddForce(-transform.forward * 800);
                  Destroy (clone, 1.0f);
