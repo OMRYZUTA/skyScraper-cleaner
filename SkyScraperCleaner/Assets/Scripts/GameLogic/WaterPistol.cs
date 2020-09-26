@@ -11,7 +11,7 @@ public class WaterPistol : MonoBehaviour
     private bool m_IsWindowHit;
 
     [SerializeField]
-    private Transform m_Shot;
+    private GameObject m_Shot;
     // Start is called before the first frame update
     void Start()
     {
@@ -46,8 +46,9 @@ public class WaterPistol : MonoBehaviour
                 Debug.Log("Splahing water!");
                 Vector3 createInPosition = transform.position -transform.forward;
                 createInPosition.y += 1;
-                Transform clone =Instantiate(m_Shot, createInPosition , Quaternion.identity);
+                GameObject clone =Instantiate(m_Shot, createInPosition , Quaternion.identity);
                 clone.GetComponent<Rigidbody>().AddForce(-transform.forward * 800);
+                 Destroy (clone, 1.0f);
             }
         }
     }

@@ -9166,6 +9166,7 @@ GameObject:
   - component: {fileID: 198039942544698878}
   - component: {fileID: 199188810652770198}
   - component: {fileID: -6041640237604198874}
+  - component: {fileID: 5748889971460075600}
   m_Layer: 0
   m_Name: bigSplash
   m_TagString: Untagged
@@ -13814,6 +13815,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!135 &5748889971460075600
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1687118924408352}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.0000100000025
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1947517658076526
 GameObject:
   m_ObjectHideFlags: 0
