@@ -5,10 +5,12 @@ using UnityEngine.UIElements;
 
 public class WaterPistol : MonoBehaviour
 {
-    
+
     [SerializeField]
     private Player m_Player;
     private bool m_IsWindowHit;
+    [SerializeField]
+    private GameObject m_Camera;
 
     [SerializeField]
     private GameObject m_Shot;
@@ -43,13 +45,10 @@ public class WaterPistol : MonoBehaviour
         {
             if (Input.anyKeyDown)
             {
-                Debug.Log("Splahing water!");
-                Vector3 createInPosition = transform.position -transform.forward;
-                createInPosition.y += 1;
-                createInPosition.x += 0.8f;
-                GameObject clone =Instantiate(m_Shot, createInPosition , Quaternion.identity);
-                clone.GetComponent<Rigidbody>().AddForce(-transform.forward * 800);
-                 Destroy (clone, 1.0f);
+                GameObject WaterShot = Instantiate(m_Shot);
+                WaterShot.transform.position = m_Camera.transform.position + 2 * m_Camera.transform.forward;
+                WaterShot.transform.forward = m_Camera.transform.forward;
+                Destroy(WaterShot, 2.0f);
             }
         }
     }

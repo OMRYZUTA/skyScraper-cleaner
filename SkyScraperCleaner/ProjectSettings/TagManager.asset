@@ -6,6 +6,7 @@ TagManager:
   tags:
   - GameBuilding
   - DirtyWindow
+  - Bird
   layers:
   - Default
   - TransparentFX
