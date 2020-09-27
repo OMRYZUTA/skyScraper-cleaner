@@ -90,7 +90,7 @@ public class Player : MonoBehaviour
             Vector3 movementChange= i_Hit.transform.position - transform.position;
             movementChange.z = 0;
             movementChange.x = 0;
-            movementChange *= 0.05f;
+            movementChange *= 0.08f;
             Debug.Log("to: " + movementChange);
             transform.position -= movementChange;
         }
