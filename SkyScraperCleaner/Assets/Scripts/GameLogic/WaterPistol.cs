@@ -46,7 +46,7 @@ public class WaterPistol : MonoBehaviour
             if (Input.anyKeyDown)
             {
                 GameObject WaterShot = Instantiate(m_Shot);
-                WaterShot.transform.position = m_Camera.transform.position + 2 * m_Camera.transform.forward;
+                WaterShot.transform.position = m_Camera.transform.position + 3 * m_Camera.transform.forward;
                 WaterShot.transform.forward = m_Camera.transform.forward;
                 Destroy(WaterShot, 2.0f);
             }

@@ -11,7 +11,7 @@ public class DirtyWindow : MonoBehaviour
     void Start()
     {
         System.Random rand= new System.Random();
-        m_NumOfHitsToClean = rand.Next(1, 5);
+        m_NumOfHitsToClean = rand.Next(1, 3);
     }
 
     // Update is called once per frame
