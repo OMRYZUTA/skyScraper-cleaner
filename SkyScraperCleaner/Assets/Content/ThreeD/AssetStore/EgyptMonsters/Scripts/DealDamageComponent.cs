@@ -1,11 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿//using UnityEngine;
 
-public class DealDamageComponent : MonoBehaviour {
+//namespace Assets.Content.ThreeD.AssetStore.EgyptMonsters.Scripts
+//{
+//    public class DealDamageComponent : MonoBehaviour {
 
-    public GameObject hitFX;
-	void DealDamage() {
-        transform.parent.GetComponent<DemoController>().DealDamage(this);
-    }
-}
+//        public GameObject hitFX;
+//        void DealDamage() {
+//            transform.parent.GetComponent<DemoController>().DealDamage(this);
+//        }
+//    }
+//}
