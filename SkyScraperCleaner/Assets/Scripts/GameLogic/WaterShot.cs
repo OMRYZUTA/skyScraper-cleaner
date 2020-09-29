@@ -5,6 +5,7 @@ using UnityEngine;
 public class WaterShot : MonoBehaviour
 {
     public float m_Speed = 20f;
+
     // Start is called before the first frame update
     void Start()
     {

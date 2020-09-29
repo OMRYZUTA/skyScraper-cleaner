@@ -6,14 +6,11 @@ using UnityEngine.UIElements;
 public class WaterPistol : MonoBehaviour
 {
 
-    [SerializeField]
-    private Player m_Player;
+    [SerializeField] private Player m_Player;
+    [SerializeField] private GameObject m_Camera;
+    [SerializeField] private GameObject m_Shot;
     private bool m_IsWindowHit;
-    [SerializeField]
-    private GameObject m_Camera;
 
-    [SerializeField]
-    private GameObject m_Shot;
     // Start is called before the first frame update
     void Start()
     {

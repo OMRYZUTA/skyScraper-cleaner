@@ -8,6 +8,4 @@ public class DealDamageComponent : MonoBehaviour {
 	void DealDamage() {
         transform.parent.GetComponent<DemoController>().DealDamage(this);
     }
-	
-
 }

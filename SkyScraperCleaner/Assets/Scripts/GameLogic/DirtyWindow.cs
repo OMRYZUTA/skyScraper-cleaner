@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DirtyWindow : MonoBehaviour
 {
-    private int m_HitCounter=0;
+    private int m_HitCounter = 0;
     private int m_NumOfHitsToClean;
 
     // Start is called before the first frame update
