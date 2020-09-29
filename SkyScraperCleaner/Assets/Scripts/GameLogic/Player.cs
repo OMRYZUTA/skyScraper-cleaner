@@ -16,6 +16,8 @@ public class Player : MonoBehaviour
     private GameObject m_Pistol;
     private float m_Speed = 20;
     private float m_Time;
+    
+    public AudioSource m_RopePull;
 
     public event Action<GameObject> ReportBuildingHit;
                         
@@ -26,6 +28,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         resetPosition();
+        m_RopePull = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -49,8 +52,7 @@ public class Player : MonoBehaviour
                 if (selection.CompareTag("GameBuilding"))
                 {
                     moveUp(hit);
-                    m_Pistol.SetActive(false);
-                    m_WaterPistol.SetActive(false);
+                  
                 }
                 else if (selection.CompareTag("DirtyWindow"))
                 {
@@ -84,15 +86,14 @@ public class Player : MonoBehaviour
     {
         if (Input.anyKeyDown && this.transform.position.y < 43)
         {
-            Debug.Log("Moving up!!!");
-            Debug.Log("Position: " + transform.position);
-            Debug.Log("hit: " + i_Hit.transform.position);
+            m_Pistol.SetActive(false);
+            m_WaterPistol.SetActive(false);
             Vector3 movementChange= i_Hit.transform.position - transform.position;
             movementChange.z = 0;
             movementChange.x = 0;
-            movementChange *= 0.08f;
-            Debug.Log("to: " + movementChange);
+            movementChange *= 0.1f;
             transform.position -= movementChange;
+            m_RopePull.Play();
         }
     }
 
