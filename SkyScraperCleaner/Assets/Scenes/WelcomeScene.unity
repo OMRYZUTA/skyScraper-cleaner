@@ -1576,9 +1576,11 @@ GameObject:
   - component: {fileID: 1096306836}
   - component: {fileID: 1096306835}
   - component: {fileID: 1096306834}
+  - component: {fileID: 1096306838}
+  - component: {fileID: 1096306837}
   m_Layer: 5
   m_Name: AcceptButton
-  m_TagString: Untagged
+  m_TagString: Button
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1645,7 +1647,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1096306835}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 389576368}
+        m_MethodName: CloseHowToPlayPopUp
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1096306835
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1682,6 +1695,35 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1096306832}
   m_CullTransparentMesh: 0
+--- !u!54 &1096306837
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1096306832}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
+--- !u!65 &1096306838
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1096306832}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 162.601, y: 22.490805, z: 0.008913744}
+  m_Center: {x: -7.342858, y: 5.4579964, z: -0.008566643}
 --- !u!1 &1138335321
 GameObject:
   m_ObjectHideFlags: 0
@@ -2550,9 +2592,11 @@ GameObject:
   - component: {fileID: 1717633279}
   - component: {fileID: 1717633278}
   - component: {fileID: 1717633277}
+  - component: {fileID: 1717633281}
+  - component: {fileID: 1717633280}
   m_Layer: 5
   m_Name: AcceptButton
-  m_TagString: Untagged
+  m_TagString: Button
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2619,7 +2663,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1717633278}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 389576368}
+        m_MethodName: PlayerWantsToExit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1717633278
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2656,6 +2711,35 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1717633275}
   m_CullTransparentMesh: 0
+--- !u!54 &1717633280
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1717633275}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
+--- !u!65 &1717633281
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1717633275}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 162.601, y: 22.490805, z: 0.008913744}
+  m_Center: {x: -7.342858, y: 5.4579964, z: -0.008566643}
 --- !u!1 &1729062730
 GameObject:
   m_ObjectHideFlags: 0
@@ -2767,9 +2851,11 @@ GameObject:
   - component: {fileID: 1812530885}
   - component: {fileID: 1812530884}
   - component: {fileID: 1812530883}
+  - component: {fileID: 1812530887}
+  - component: {fileID: 1812530886}
   m_Layer: 5
   m_Name: DeclinetButton (1)
-  m_TagString: Untagged
+  m_TagString: Button
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2836,7 +2922,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1812530884}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 389576368}
+        m_MethodName: PlayerWantsToStay
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1812530884
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2873,6 +2970,35 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1812530881}
   m_CullTransparentMesh: 0
+--- !u!65 &1812530886
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1812530881}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 162.601, y: 22.490805, z: 0.008913744}
+  m_Center: {x: -7.342858, y: 5.4579964, z: -0.008566643}
+--- !u!54 &1812530887
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1812530881}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!1 &1827626267
 GameObject:
   m_ObjectHideFlags: 0
