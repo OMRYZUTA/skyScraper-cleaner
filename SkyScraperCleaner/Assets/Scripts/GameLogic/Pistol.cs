@@ -41,6 +41,7 @@ public class Pistol : MonoBehaviour
         {
             if (Input.anyKeyDown)
             {
+                Debug.Log("shooting bullet!!");
                 GameObject Bullet = Instantiate(m_Shot);
                 Bullet.transform.position = m_Camera.transform.position + 2 * m_Camera.transform.forward;
                 Bullet.transform.forward = m_Camera.transform.forward;
