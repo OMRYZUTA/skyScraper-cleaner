@@ -24,11 +24,12 @@ namespace Assets.Scripts.GameLogic
         void OnCollisionEnter(Collision collision)
         {
             m_ShotsCounter++;
-
+            Debug.Log("Enter Collision");
             if (m_ShotsCounter == m_NumOfShotsToDie)
             {
+                GetComponent<Animator>().SetBool("m_IsDead",true);
                 Debug.Log("killed");
-                Destroy(this);
+                Destroy(this.gameObject,3);
             }
         }
     }
