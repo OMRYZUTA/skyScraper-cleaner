@@ -5,7 +5,7 @@ using UnityEngine;
 public class AttackBirdsManager : MonoBehaviour
 {
     public GameObject attackBird;
-    public float spawnTime = 10f;
+    public float spawnTime = 12f;
     [SerializeField] public Transform lookAtMe;
 
     // Start is called before the first frame update

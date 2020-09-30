@@ -931,7 +931,8 @@ GameObject:
   - component: {fileID: 1591093363353139193}
   - component: {fileID: 1677666208799080349}
   - component: {fileID: -2490832644659043587}
-  - component: {fileID: 1899399279181266400}
+  - component: {fileID: -864946143354472574}
+  - component: {fileID: -9009732462753364991}
   m_Layer: 0
   m_Name: AttackBird
   m_TagString: Bird
@@ -987,7 +988,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.3216206, y: 0.20371504, z: 0.7349988}
   m_Center: {x: 0.045014393, y: 0.6297421, z: -0.13250078}
---- !u!54 &1899399279181266400
+--- !u!114 &-864946143354472574
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1594154028258750143}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b2bda793ca406043ab54dd755bb031b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dieAnimation: {fileID: 9500000, guid: cb6e4e3a32c0346468e6573e30f031a3, type: 3}
+--- !u!54 &-9009732462753364991
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
