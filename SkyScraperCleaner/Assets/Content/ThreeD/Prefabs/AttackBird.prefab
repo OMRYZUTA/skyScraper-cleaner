@@ -931,7 +931,6 @@ GameObject:
   - component: {fileID: 1591093363353139193}
   - component: {fileID: 1677666208799080349}
   - component: {fileID: -6854686956415968537}
-  - component: {fileID: 3387316003858039457}
   m_Layer: 0
   m_Name: AttackBird
   m_TagString: Bird
@@ -987,19 +986,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitFX: {fileID: 1486350219787176, guid: 87b722261969f194ea7e30f358a7b1e6, type: 3}
---- !u!114 &3387316003858039457
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1594154028258750143}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b2bda793ca406043ab54dd755bb031b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dieAnimation: {fileID: 9500000, guid: cb6e4e3a32c0346468e6573e30f031a3, type: 3}
 --- !u!1 &1594169458842723425
 GameObject:
   m_ObjectHideFlags: 0
