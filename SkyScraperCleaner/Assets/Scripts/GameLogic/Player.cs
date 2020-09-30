@@ -2,39 +2,46 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 
 public class Player : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject m_LookAtMeWindow;
-
+    [SerializeField] private GameObject m_LookAtMeWindow;
+    [SerializeField] private GameObject m_WaterPistol;
+    [SerializeField] private GameObject m_Pistol;
+    [SerializeField] private Text m_Timer;
     private Transform m_selection;
-    [SerializeField]
-    private GameObject m_WaterPistol;
-    [SerializeField]
-    private GameObject m_Pistol;
+    private bool m_isGameFinished = false;
     private float m_Speed = 20;
-    private float m_Time;
-    
+    private float m_StartTime, m_Time;        
     public AudioSource m_RopePull;
 
-    public event Action<GameObject> ReportBuildingHit;
-                        
-    public event Action<GameObject> ReportWindowHit;
-                        
+    public event Action<GameObject> ReportBuildingHit;                        
+    public event Action<GameObject> ReportWindowHit;                        
     public event Action<GameObject> ReportBirdHit;
+
     // Start is called before the first frame update
     void Start()
     {
         resetPosition();
         m_RopePull = GetComponent<AudioSource>();
+        m_StartTime = Time.time;
     }
 
     // Update is called once per frame
     void Update()
     {
         input();
+
+        if (!m_isGameFinished)
+        {
+            m_Time = Time.time - m_StartTime;
+            string minutes = ((int)m_Time / 60).ToString();
+            string seconds = (m_Time % 60).ToString("f2");
+
+            m_Timer.text = minutes + ":" + seconds;
+        }      
     }
 
     private void input()
