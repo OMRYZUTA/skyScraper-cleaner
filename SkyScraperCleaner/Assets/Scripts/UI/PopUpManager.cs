@@ -17,6 +17,7 @@ public class PopUpManager : MonoBehaviour
     }
     public void PlayerSureAboutExit()
     {
+        Debug.Log("exit");
         Application.Quit();
     }
     public void PlayerWantsToStay()
