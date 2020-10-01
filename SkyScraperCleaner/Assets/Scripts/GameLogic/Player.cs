@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 
@@ -12,7 +13,7 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject m_Pistol;
     [SerializeField] private Text m_Timer;
     private Transform m_selection;
-    private bool m_isGameFinished = false;
+    private bool m_isGameOver = false;
     private float m_Speed = 20;
     private float m_StartTime, m_Time;
     public AudioSource m_RopePull;
@@ -21,12 +22,27 @@ public class Player : MonoBehaviour
     public event Action<GameObject> ReportWindowHit;
     public event Action<GameObject> ReportBirdHit;
 
+    public bool IsGameOver
+    {
+        get
+        {
+            return m_isGameOver;
+        }
+
+        set
+        {
+            m_isGameOver = value;
+        }
+    }
+
+
     // Start is called before the first frame update
     void Start()
     {
         resetPosition();
         m_RopePull = GetComponent<AudioSource>();
         m_StartTime = Time.time;
+        m_Pistol.SetActive(false);
     }
 
     // Update is called once per frame
@@ -34,13 +50,17 @@ public class Player : MonoBehaviour
     {
         input();
 
-        if (!m_isGameFinished)
+        if (!m_isGameOver)
         {
             m_Time = Time.time - m_StartTime;
             string minutes = ((int)m_Time / 60).ToString();
             string seconds = (m_Time % 60).ToString("f2");
 
             m_Timer.text = minutes + ":" + seconds;
+        }
+        else
+        {
+            SceneManager.LoadScene(0);
         }
     }
 

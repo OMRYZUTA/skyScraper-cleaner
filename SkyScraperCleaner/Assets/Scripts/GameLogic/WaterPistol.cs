@@ -1,51 +1,51 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UIElements;
+﻿using UnityEngine;
 
-public class WaterPistol : MonoBehaviour
+namespace Assets.Scripts.GameLogic
 {
-
-    [SerializeField] private Player m_Player;
-    [SerializeField] private GameObject m_Camera;
-    [SerializeField] private GameObject m_Shot;
-    private bool m_IsWindowHit;
-
-    // Start is called before the first frame update
-    void Start()
+    public class WaterPistol : MonoBehaviour
     {
-        m_IsWindowHit = false;
-        m_Player.ReportBirdHit += M_Player_ReportBirdHit;
-        m_Player.ReportBuildingHit += Player_ReportBuildingHit;
-        m_Player.ReportWindowHit += Player_ReportWindowHit;
-    }
 
-    private void Player_ReportWindowHit(GameObject obj)
-    {
-        m_IsWindowHit = true;
-    }
+        [SerializeField] private Player m_Player;
+        [SerializeField] private GameObject m_Camera;
+        [SerializeField] private GameObject m_Shot;
+        private bool m_IsWindowHit;
 
-    private void Player_ReportBuildingHit(GameObject obj)
-    {
-        m_IsWindowHit = false;
-    }
-
-    private void M_Player_ReportBirdHit(GameObject obj)
-    {
-        m_IsWindowHit = false;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (m_IsWindowHit)
+        // Start is called before the first frame update
+        void Start()
         {
-            if (Input.anyKeyDown)
+            m_IsWindowHit = false;
+            m_Player.ReportBirdHit += M_Player_ReportBirdHit;
+            m_Player.ReportBuildingHit += Player_ReportBuildingHit;
+            m_Player.ReportWindowHit += Player_ReportWindowHit;
+        }
+
+        private void Player_ReportWindowHit(GameObject obj)
+        {
+            m_IsWindowHit = true;
+        }
+
+        private void Player_ReportBuildingHit(GameObject obj)
+        {
+            m_IsWindowHit = false;
+        }
+
+        private void M_Player_ReportBirdHit(GameObject obj)
+        {
+            m_IsWindowHit = false;
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+            if (m_IsWindowHit)
             {
-                GameObject WaterShot = Instantiate(m_Shot);
-                WaterShot.transform.position = m_Camera.transform.position + 3 * m_Camera.transform.forward;
-                WaterShot.transform.forward = m_Camera.transform.forward;
-                Destroy(WaterShot, 2.0f);
+                if (Input.anyKeyDown)
+                {
+                    GameObject WaterShot = Instantiate(m_Shot);
+                    WaterShot.transform.position = m_Camera.transform.position + 3 * m_Camera.transform.forward;
+                    WaterShot.transform.forward = m_Camera.transform.forward;
+                    Destroy(WaterShot, 2.0f);
+                }
             }
         }
     }

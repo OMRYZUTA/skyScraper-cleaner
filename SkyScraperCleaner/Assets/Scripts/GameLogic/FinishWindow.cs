@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class FinishWindow : MonoBehaviour
 {
-   
+    [SerializeField]
+    private Player m_Player;
 
 
     void OnTriggerEnter(Collider i_OtherCollider)
@@ -13,7 +14,8 @@ public class FinishWindow : MonoBehaviour
         {
             GetComponent<MeshRenderer>().enabled = true;
         }
-        Debug.Log("Start Scene");
+
+        m_Player.IsGameOver = true;
     }
 
 }
