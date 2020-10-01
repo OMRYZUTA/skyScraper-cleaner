@@ -14,12 +14,6 @@ public class DirtyWindow : MonoBehaviour
         m_NumOfHitsToClean = rand.Next(1, 3);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     void OnCollisionEnter(Collision collision)
     {
         m_HitCounter++;

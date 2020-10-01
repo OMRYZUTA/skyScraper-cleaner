@@ -5,7 +5,7 @@ using UnityEngine;
 public class AttackBirdsManager : MonoBehaviour
 {
     public GameObject attackBird;
-    public float spawnTime = 12f;
+    public float spawnTime = 20f;
     [SerializeField] public Transform lookAtMe;
     [SerializeField]
     private int m_BirdsNum ;
@@ -17,11 +17,8 @@ public class AttackBirdsManager : MonoBehaviour
         InvokeRepeating("SpawnAttackBird", spawnTime, spawnTime);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
+   
 
-    }
 
     void SpawnAttackBird()
     {

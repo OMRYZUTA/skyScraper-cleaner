@@ -14,11 +14,11 @@ public class Player : MonoBehaviour
     private Transform m_selection;
     private bool m_isGameFinished = false;
     private float m_Speed = 20;
-    private float m_StartTime, m_Time;        
+    private float m_StartTime, m_Time;
     public AudioSource m_RopePull;
 
-    public event Action<GameObject> ReportBuildingHit;                        
-    public event Action<GameObject> ReportWindowHit;                        
+    public event Action<GameObject> ReportBuildingHit;
+    public event Action<GameObject> ReportWindowHit;
     public event Action<GameObject> ReportBirdHit;
 
     // Start is called before the first frame update
@@ -41,7 +41,7 @@ public class Player : MonoBehaviour
             string seconds = (m_Time % 60).ToString("f2");
 
             m_Timer.text = minutes + ":" + seconds;
-        }      
+        }
     }
 
     private void input()
@@ -54,35 +54,30 @@ public class Player : MonoBehaviour
             if (hit.rigidbody != null)
             {
                 var selection = hit.transform;
-                var selectionRenderer = selection.GetComponent<Renderer>();
                 Debug.Log(selection.tag);
                 if (selection.CompareTag("GameBuilding"))
                 {
                     moveUp(hit);
-                  
+
                 }
                 else if (selection.CompareTag("DirtyWindow"))
                 {
-                    if(Input.anyKeyDown)
+
+                    if (m_WaterPistol.activeSelf == false)
                     {
-                        if(m_WaterPistol.activeSelf == false)
-                        {
-                            m_WaterPistol.SetActive(true);
-                            OnReportWindowHit(selection.GetComponent<GameObject>());
-                            m_Pistol.SetActive(false);
-                        }
+                        m_WaterPistol.SetActive(true);
+                        OnReportWindowHit(selection.GetComponent<GameObject>());
+                        m_Pistol.SetActive(false);
                     }
                 }
                 else if (selection.CompareTag("Bird"))
                 {
-                    if(Input.anyKeyDown)
+
+                    if (m_Pistol.activeSelf == false)
                     {
-                        if(m_Pistol.activeSelf == false)
-                        {
-                            m_Pistol.SetActive(true);
-                            OnReportBirdHit(selection.GetComponent<GameObject>());
-                            m_WaterPistol.SetActive(false);
-                        }
+                        m_Pistol.SetActive(true);
+                        OnReportBirdHit(selection.GetComponent<GameObject>());
+                        m_WaterPistol.SetActive(false);
                     }
                 }
             }
@@ -91,11 +86,11 @@ public class Player : MonoBehaviour
 
     private void moveUp(RaycastHit i_Hit)
     {
-        if (Input.anyKeyDown && this.transform.position.y < 43)
+        if (Input.anyKeyDown && this.transform.position.y < 46)
         {
             m_Pistol.SetActive(false);
             m_WaterPistol.SetActive(false);
-            Vector3 movementChange= i_Hit.transform.position - transform.position;
+            Vector3 movementChange = i_Hit.transform.position - transform.position;
             movementChange.z = 0;
             movementChange.x = 0;
             movementChange *= 0.1f;
