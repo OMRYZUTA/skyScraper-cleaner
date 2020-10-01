@@ -22,18 +22,9 @@ public class AttackBirdsManager : MonoBehaviour
 
     void SpawnAttackBird()
     {
-        var newBird = GameObject.Instantiate(attackBird);
         if(m_BirdsNum < m_MaxBirdsNum)
         {
-            Vector3 lookAt = new Vector3();
-            lookAt = lookAtMe.transform.position;
-            lookAt.x -= 0.3f;
-
-            newBird.transform.position = new Vector3(
-                lookAtMe.transform.position.x + 2,
-                lookAtMe.transform.position.y,
-                lookAtMe.transform.position.z - 2);
-            newBird.transform.LookAt(lookAt);
+            var newBird = GameObject.Instantiate(attackBird);
             m_BirdsNum++;
         }
     }
