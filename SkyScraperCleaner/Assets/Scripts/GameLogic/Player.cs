@@ -60,6 +60,7 @@ public class Player : MonoBehaviour
         }
         else
         {
+            Debug.Log("Switching to welcome Scene!");
             SceneManager.LoadScene(0);
         }
     }
