@@ -94,7 +94,7 @@ public class HighScoreTable : MonoBehaviour
         transformList.Add(entryTransform);
     }
 
-    private void AddHighscoreEntry(int i_Score )
+    public void AddHighscoreEntry(int i_Score )
     {
         //create highscore entry
         HighScoreEntry highscoreEntry = new HighScoreEntry(i_Score);

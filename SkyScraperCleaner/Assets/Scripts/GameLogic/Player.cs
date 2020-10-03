@@ -35,6 +35,13 @@ public class Player : MonoBehaviour
         }
     }
 
+    public float PlayTime
+    {
+        get
+        {
+            return m_Time;
+        }
+    }
 
     // Start is called before the first frame update
     void Start()
