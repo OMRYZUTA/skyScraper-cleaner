@@ -75,7 +75,7 @@ public class Player : MonoBehaviour
     private void input()
     {
         RaycastHit hit;
-        Ray ray = Camera.main.ScreenPointToRay(new Vector3(Screen.width / 2f, Screen.height / 2f, 0));
+        Ray ray = Camera.main.ScreenPointToRay(new Vector3(0.9f*Screen.width / 4f,1.1f* Screen.height / 2f, 0));
         if (Physics.Raycast(ray, out hit))
         {
 

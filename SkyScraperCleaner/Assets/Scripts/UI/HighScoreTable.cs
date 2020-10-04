@@ -62,7 +62,7 @@ public class HighScoreTable : MonoBehaviour
         List<Transform> transformList)
     {
 
-        float templateHeight = 0.04f;
+        float templateHeight = 0.03f;
         Transform entryTransform = Instantiate(entryTemplate, entryContainer);
         RectTransform entryRectTransform = entryTransform.GetComponent<RectTransform>();
         entryRectTransform.anchoredPosition = new Vector2(0, -templateHeight * transformList.Count);

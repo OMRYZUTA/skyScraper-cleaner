@@ -28,8 +28,9 @@ public class ScoreManager : MonoBehaviour
 
     public void TrySaveResult()
     {
-        m_Score += (int)-m_Player.PlayTime * 50;
+        m_Score += (int)-m_Player.PlayTime * 10;
         HighScoreTable hT = new HighScoreTable();
+        Debug.Log("tried to save");
         hT.AddHighscoreEntry(m_Score);
     }
 

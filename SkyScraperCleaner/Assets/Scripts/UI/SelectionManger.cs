@@ -18,7 +18,7 @@ public class SelectionManger : MonoBehaviour
     void Update()
     {
         RaycastHit hit;
-        Ray ray = Camera.main.ScreenPointToRay(new Vector3(Screen.width / 2f, Screen.height / 2f, 0));
+        Ray ray = Camera.main.ScreenPointToRay(new Vector3(/*0.275f**/Screen.width / 4f,1.15f*Screen.height / 2f, 0));
 
         if (Physics.Raycast(ray, out hit))
         {
