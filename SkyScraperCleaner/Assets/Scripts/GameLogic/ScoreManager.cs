@@ -29,9 +29,19 @@ public class ScoreManager : MonoBehaviour
     public void TrySaveResult()
     {
         m_Score += (int)-m_Player.PlayTime * 10;
-        HighScoreTable hT = new HighScoreTable();
         Debug.Log("tried to save");
-        hT.AddHighscoreEntry(m_Score);
+
+        //create highscore entry
+        HighScoreTable.HighScoreEntry highscoreEntry = new HighScoreTable.HighScoreEntry(m_Score);
+        // load saved highscores
+        string jsonString = PlayerPrefs.GetString("highscoreTable");
+        HighScoreTable.Highscores highscores = JsonUtility.FromJson<HighScoreTable.Highscores>(jsonString);
+        // add new highscore
+        highscores.highscoreEntryList.Add(highscoreEntry);
+        //save updated score
+        string json = JsonUtility.ToJson(highscores);
+        PlayerPrefs.SetString("highscoreTable", json);
+        PlayerPrefs.Save();
     }
 
 }

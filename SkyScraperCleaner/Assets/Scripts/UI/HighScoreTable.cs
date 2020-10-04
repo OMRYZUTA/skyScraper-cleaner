@@ -18,7 +18,7 @@ public class HighScoreTable : MonoBehaviour
 
         string jsonString = PlayerPrefs.GetString("highscoreTable");
         Highscores highscores = JsonUtility.FromJson<Highscores>(jsonString);
-       
+
         // bubble sort the Table
         for (int i = 0; i < highscores.highscoreEntryList.Count; i++)
         {
@@ -36,7 +36,7 @@ public class HighScoreTable : MonoBehaviour
         highscoreEntryTransformList = new List<Transform>();
         foreach (var highscore in highscores.highscoreEntryList)
         {
-            if(highscore != null)
+            if (highscore != null)
             {
                 CreateHighScoreEntryTransform(highscore, entryContainer, highscoreEntryTransformList);
             }
@@ -45,8 +45,8 @@ public class HighScoreTable : MonoBehaviour
 
     private void resetHighScoreTable(Highscores highscores)
     {
-        
-        for(int i = 5; i < highscores.highscoreEntryList.Count; i++)
+
+        for (int i = 5; i < highscores.highscoreEntryList.Count; i++)
         {
             highscores.highscoreEntryList.Remove(highscores.highscoreEntryList[i]);
         }
@@ -94,7 +94,7 @@ public class HighScoreTable : MonoBehaviour
         transformList.Add(entryTransform);
     }
 
-    public void AddHighscoreEntry(int i_Score )
+    public void AddHighscoreEntry(int i_Score)
     {
         //create highscore entry
         HighScoreEntry highscoreEntry = new HighScoreEntry(i_Score);
@@ -109,13 +109,13 @@ public class HighScoreTable : MonoBehaviour
         PlayerPrefs.Save();
     }
 
-    private class Highscores
+    public class Highscores
     {
         public List<HighScoreEntry> highscoreEntryList;
     }
 
     [System.Serializable]
-    private class HighScoreEntry
+    public class HighScoreEntry
     {
         public int m_Score;
         public string m_Name;
