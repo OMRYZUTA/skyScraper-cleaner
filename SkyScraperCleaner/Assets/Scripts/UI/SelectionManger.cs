@@ -9,6 +9,9 @@ public class SelectionManger : MonoBehaviour
     // Start is called before the first frame update
     private bool m_IsButtonHovered = false;
     private Button m_SelectedButton;
+        private int m_FrameCounter=0;
+    private float m_FpsTimer=0;
+     [SerializeField] private Text m_FpsText;
     void Start()
     {
         m_SelectedButton = null;
@@ -47,6 +50,14 @@ public class SelectionManger : MonoBehaviour
                 m_IsButtonHovered = false;
                 m_SelectedButton.OnPointerExit(new PointerEventData(EventSystem.current));
             }
+                m_FpsTimer+=Time.deltaTime;
+        m_FrameCounter++;
+        if(m_FrameCounter>7)
+        {
+            m_FpsText.text="Fps : "+(1/(m_FpsTimer/m_FrameCounter));
+            m_FpsTimer=0;
+            m_FrameCounter =0;
+        }
         }
     }
 }

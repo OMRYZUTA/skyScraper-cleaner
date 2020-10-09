@@ -12,10 +12,13 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject m_WaterPistol;
     [SerializeField] private GameObject m_Pistol;
     [SerializeField] private Text m_Timer;
+    [SerializeField] private Text m_FpsText;
     private Transform m_selection;
     private bool m_isGameOver = false;
     private float m_Speed = 20;
     private float m_StartTime, m_Time;
+    private int m_FrameCounter=0;
+    private float m_FpsTimer=0;
     public AudioSource m_RopePull;
 
     public event Action<GameObject> ReportBuildingHit;
@@ -70,6 +73,15 @@ public class Player : MonoBehaviour
             Debug.Log("Switching to welcome Scene!");
             SceneManager.LoadScene(0);
         }
+        m_FpsTimer+=Time.deltaTime;
+        m_FrameCounter++;
+        if(m_FrameCounter>7)
+        {
+            m_FpsText.text="Fps : "+(1/(m_FpsTimer/m_FrameCounter));
+            m_FpsTimer=0;
+            m_FrameCounter =0;
+        }
+
     }
 
     private void input()
@@ -129,7 +141,7 @@ public class Player : MonoBehaviour
 
     private void resetPosition()
     {
-        transform.position = new Vector3(-28, 5, -12);
+        //transform.position = new Vector3(-28, 5, -12);
         Vector3 lookAt = new Vector3();
         lookAt = m_LookAtMeWindow.transform.position;
         lookAt.x -= 0.3f;

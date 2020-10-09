@@ -28,7 +28,7 @@ public class ScoreManager : MonoBehaviour
 
     public void TrySaveResult()
     {
-        m_Score += (int)-m_Player.PlayTime * 10;
+        m_Score += (int)-m_Player.PlayTime * 5;
         Debug.Log("tried to save");
 
         //create highscore entry

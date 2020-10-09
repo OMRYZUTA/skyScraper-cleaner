@@ -44,7 +44,7 @@ namespace Assets.Scripts.GameLogic
                     GameObject WaterShot = Instantiate(m_Shot);
                     WaterShot.transform.position = m_Camera.transform.position + 3 * m_Camera.transform.forward;
                     WaterShot.transform.forward = m_Camera.transform.forward;
-                    Destroy(WaterShot, 2.0f);
+                    Destroy(WaterShot, 1.5f);
                 }
             }
         }
