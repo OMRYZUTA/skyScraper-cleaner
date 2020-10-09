@@ -13,12 +13,11 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject m_Pistol;
     [SerializeField] private Text m_Timer;
     [SerializeField] private Text m_FpsText;
-    private Transform m_selection;
-    private bool m_isGameOver = false;
-    private float m_Speed = 20;
+
+    private bool m_IsGameOver = false;
     private float m_StartTime, m_Time;
-    private int m_FrameCounter=0;
-    private float m_FpsTimer=0;
+    private int m_FrameCounter = 0;
+    private float m_FpsTimer = 0;
     public AudioSource m_RopePull;
 
     public event Action<GameObject> ReportBuildingHit;
@@ -29,12 +28,12 @@ public class Player : MonoBehaviour
     {
         get
         {
-            return m_isGameOver;
+            return m_IsGameOver;
         }
 
         set
         {
-            m_isGameOver = value;
+            m_IsGameOver = value;
         }
     }
 
@@ -60,7 +59,7 @@ public class Player : MonoBehaviour
     {
         input();
 
-        if (!m_isGameOver)
+        if (!m_IsGameOver)
         {
             m_Time = Time.time - m_StartTime;
             string minutes = ((int)m_Time / 60).ToString();
@@ -73,21 +72,23 @@ public class Player : MonoBehaviour
             Debug.Log("Switching to welcome Scene!");
             SceneManager.LoadScene(0);
         }
-        m_FpsTimer+=Time.deltaTime;
-        m_FrameCounter++;
-        if(m_FrameCounter>7)
-        {
-            m_FpsText.text="Fps : "+(1/(m_FpsTimer/m_FrameCounter));
-            m_FpsTimer=0;
-            m_FrameCounter =0;
-        }
 
+        m_FpsTimer += Time.deltaTime;
+        m_FrameCounter++;
+
+        if (m_FrameCounter > 7)
+        {
+            m_FpsText.text = "Fps : " + (1 / (m_FpsTimer / m_FrameCounter));
+            m_FpsTimer = 0;
+            m_FrameCounter = 0;
+        }
     }
 
     private void input()
     {
         RaycastHit hit;
-        Ray ray = Camera.main.ScreenPointToRay(new Vector3(0.9f*Screen.width / 4f,1.1f* Screen.height / 2f, 0));
+        Ray ray = Camera.main.ScreenPointToRay(new Vector3(0.9f * Screen.width / 4f, 1.1f * Screen.height / 2f, 0));
+        
         if (Physics.Raycast(ray, out hit))
         {
 
@@ -95,14 +96,13 @@ public class Player : MonoBehaviour
             {
                 var selection = hit.transform;
                 Debug.Log(selection.tag);
+
                 if (selection.CompareTag("GameBuilding"))
                 {
                     moveUp(hit);
-
                 }
                 else if (selection.CompareTag("DirtyWindow"))
                 {
-
                     if (m_WaterPistol.activeSelf == false)
                     {
                         m_WaterPistol.SetActive(true);
@@ -112,7 +112,6 @@ public class Player : MonoBehaviour
                 }
                 else if (selection.CompareTag("Bird"))
                 {
-
                     if (m_Pistol.activeSelf == false)
                     {
                         m_Pistol.SetActive(true);
@@ -141,7 +140,6 @@ public class Player : MonoBehaviour
 
     private void resetPosition()
     {
-        //transform.position = new Vector3(-28, 5, -12);
         Vector3 lookAt = new Vector3();
         lookAt = m_LookAtMeWindow.transform.position;
         lookAt.x -= 0.3f;

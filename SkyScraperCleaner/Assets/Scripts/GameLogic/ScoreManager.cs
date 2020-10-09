@@ -4,9 +4,7 @@ using UnityEngine;
 
 public class ScoreManager : MonoBehaviour
 {
-    [SerializeField]
-    private Player m_Player;
-
+    [SerializeField] private Player m_Player;
     private int m_Score;
 
     // Start is called before the first frame update
@@ -33,15 +31,14 @@ public class ScoreManager : MonoBehaviour
 
         //create highscore entry
         HighScoreTable.HighScoreEntry highscoreEntry = new HighScoreTable.HighScoreEntry(m_Score);
-        // load saved highscores
+        //load saved highscores
         string jsonString = PlayerPrefs.GetString("highscoreTable");
         HighScoreTable.Highscores highscores = JsonUtility.FromJson<HighScoreTable.Highscores>(jsonString);
-        // add new highscore
+        //add new highscore
         highscores.highscoreEntryList.Add(highscoreEntry);
         //save updated score
         string json = JsonUtility.ToJson(highscores);
         PlayerPrefs.SetString("highscoreTable", json);
         PlayerPrefs.Save();
     }
-
 }

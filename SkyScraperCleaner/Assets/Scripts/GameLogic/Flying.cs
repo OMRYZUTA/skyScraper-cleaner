@@ -10,199 +10,199 @@ using UnityEngine.UIElements;
 
 public class Flying : MonoBehaviour
 {
-    [SerializeField] float idleSpeed, turnSpeed, switchSeconds, idleRatio;
-    [SerializeField] Vector2 animSpeedMinMax, moveSpeedMinMax, changeAnimEveryFromTo, changeTargetEveryFromTo;
-    [SerializeField] Transform homeTarget, flyingTarget;
-    [SerializeField] Vector2 radiusMinMax, yMinMax;
-    [SerializeField] public bool returnToBase = false;
-    [SerializeField] public float randomBaseOffset = 5, delayStart = 0f;
+    [SerializeField] float m_IdleSpeed, m_TurnSpeed, m_SwitchSeconds, m_IdleRatio;
+    [SerializeField] Vector2 m_AnimSpeedMinMax, m_MoveSpeedMinMax, m_ChangeAnimEveryFromTo, m_ChangeTargetEveryFromTo;
+    [SerializeField] Transform m_HomeTarget, m_FlyingTarget;
+    [SerializeField] Vector2 m_RadiusMinMax, m_YMinMax;
+    [SerializeField] public bool m_ReturnToBase = false;
+    [SerializeField] public float m_RandomBaseOffset = 5, m_DelayStart = 0f;
 
-    private Animator animator;
-    private Rigidbody body;
-    [System.NonSerialized] public float changeTarget = 0f, changeAnim = 0f, timeSinceTarget = 0f, timeSinceAnim = 0f, 
-        prevAnim, currAnim = 0f, prevSpeed, speed, zturn, prevz, turnSpeedBackup;
-    private Vector3 rotateTarget, position, direction, velocity, randomBase;
-    private Quaternion lookRotation;
-    [System.NonSerialized] public float distanceFromBase, distanceFromTarget;
+    private Animator m_Animator;
+    private Rigidbody m_Body;
+    [System.NonSerialized] public float m_ChangeTarget = 0f, m_ChangeAnim = 0f, m_TimeSinceTarget = 0f, 
+        m_TimeSinceAnim = 0f, m_PrevAnim, m_CurrAnim = 0f, m_PrevSpeed, m_Speed, m_Zturn, m_Prevz, m_TurnSpeedBackup;
+    private Vector3 m_rotateTarget, m_Position, m_Direction, m_RandomBase;
+    private Quaternion m_LookRotation;
+    [System.NonSerialized] public float m_DistanceFromBase, m_DistanceFromTarget;
 
 
     // Start is called before the first frame update
     void Start()
     {
         // initialize
-        animator = GetComponent<Animator>();
-        body = GetComponent<Rigidbody>();
-        turnSpeedBackup = turnSpeed;
-        direction = Quaternion.Euler(transform.eulerAngles) * (Vector3.forward);
+        m_Animator = GetComponent<Animator>();
+        m_Body = GetComponent<Rigidbody>();
+        m_TurnSpeedBackup = m_TurnSpeed;
+        m_Direction = Quaternion.Euler(transform.eulerAngles) * (Vector3.forward);
 
-        if(delayStart < 0f)
+        if (m_DelayStart < 0f)
         {
-            body.velocity = idleSpeed * direction;
+            m_Body.velocity = m_IdleSpeed * m_Direction;
         }
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        if(delayStart > 0f)
+        if (m_DelayStart > 0f)
         {
-            delayStart = Time.fixedDeltaTime;
+            m_DelayStart = Time.fixedDeltaTime;
             return;
         }
 
-        distanceFromBase = Vector3.Magnitude(randomBase - body.position);
-        distanceFromTarget = Vector3.Magnitude(flyingTarget.position - body.position);
+        m_DistanceFromBase = Vector3.Magnitude(m_RandomBase - m_Body.position);
+        m_DistanceFromTarget = Vector3.Magnitude(m_FlyingTarget.position - m_Body.position);
 
-        if(returnToBase && distanceFromBase < 10f)
+        if (m_ReturnToBase && m_DistanceFromBase < 10f)
         {
-            if(turnSpeed != 300f && body.velocity.magnitude != 0f)
+            if (m_TurnSpeed != 300f && m_Body.velocity.magnitude != 0f)
             {
-                turnSpeedBackup = turnSpeed;
-                turnSpeed = 300f;
+                m_TurnSpeedBackup = m_TurnSpeed;
+                m_TurnSpeed = 300f;
             }
-            else if(distanceFromBase <= 1f)
+            else if (m_DistanceFromBase <= 1f)
             {
-                body.velocity = Vector3.zero;
-                turnSpeed = turnSpeedBackup;
+                m_Body.velocity = Vector3.zero;
+                m_TurnSpeed = m_TurnSpeedBackup;
                 return;
             }
         }
 
-        if(changeAnim < 0f)
+        if (m_ChangeAnim < 0f)
         {
-            prevAnim = currAnim;
-            currAnim = ChangeAnim(currAnim);
-            changeAnim = UnityEngine.Random.Range(changeAnimEveryFromTo.x, changeAnimEveryFromTo.y);
-            timeSinceAnim = randomBaseOffset;
-            prevSpeed = speed;
+            m_PrevAnim = m_CurrAnim;
+            m_CurrAnim = ChangeAnim(m_CurrAnim);
+            m_ChangeAnim = UnityEngine.Random.Range(m_ChangeAnimEveryFromTo.x, m_ChangeAnimEveryFromTo.y);
+            m_TimeSinceAnim = m_RandomBaseOffset;
+            m_PrevSpeed = m_Speed;
 
-            if (currAnim == 0)
+            if (m_CurrAnim == 0)
             {
-                speed = idleSpeed;
+                m_Speed = m_IdleSpeed;
             }
             else
             {
-                speed = Mathf.Lerp(moveSpeedMinMax.x, moveSpeedMinMax.y, (currAnim - animSpeedMinMax.x) / (animSpeedMinMax.y - animSpeedMinMax.x));
+                m_Speed = Mathf.Lerp(m_MoveSpeedMinMax.x, m_MoveSpeedMinMax.y, (m_CurrAnim - m_AnimSpeedMinMax.x) / (m_AnimSpeedMinMax.y - m_AnimSpeedMinMax.x));
             }
         }
 
-        if (changeTarget < 0f)
+        if (m_ChangeTarget < 0f)
         {
-            rotateTarget = changeDirection(body.transform.position);
-            if (returnToBase)
+            m_rotateTarget = changeDirection(m_Body.transform.position);
+
+            if (m_ReturnToBase)
             {
-                changeTarget = 0.2f;
+                m_ChangeTarget = 0.2f;
             }
             else 
             {
-                changeTarget = UnityEngine.Random.Range(changeTargetEveryFromTo.x, changeTargetEveryFromTo.y);
+                m_ChangeTarget = UnityEngine.Random.Range(m_ChangeTargetEveryFromTo.x, m_ChangeTargetEveryFromTo.y);
             }
 
-            timeSinceTarget = 0f;
+            m_TimeSinceTarget = 0f;
         }
 
-        if(body.transform.position.y < yMinMax.x + 10f || body.transform.position.y > yMinMax.y - 10f)
+        if (m_Body.transform.position.y < m_YMinMax.x + 10f || m_Body.transform.position.y > m_YMinMax.y - 10f)
         {
-            if(body.transform.position.y < yMinMax.x + 10f)
+            if (m_Body.transform.position.y < m_YMinMax.x + 10f)
             {
-                rotateTarget.y = 1f;
+                m_rotateTarget.y = 1f;
             }
             else
             {
-                rotateTarget.y = -1f;
+                m_rotateTarget.y = -1f;
             }
         }
 
-        zturn = Mathf.Clamp(Vector3.SignedAngle(rotateTarget, direction, Vector3.up), -45f, 45f);
+        m_Zturn = Mathf.Clamp(Vector3.SignedAngle(m_rotateTarget, m_Direction, Vector3.up), -45f, 45f);
+        m_ChangeAnim -= Time.fixedDeltaTime;
+        m_ChangeTarget -= Time.fixedDeltaTime;
+        m_TimeSinceTarget += Time.fixedDeltaTime;
+        m_TimeSinceAnim += Time.fixedDeltaTime;
 
-        changeAnim -= Time.fixedDeltaTime;
-        changeTarget -= Time.fixedDeltaTime;
-        timeSinceTarget += Time.fixedDeltaTime;
-        timeSinceAnim += Time.fixedDeltaTime;
-
-        if(rotateTarget != Vector3.zero)
+        if (m_rotateTarget != Vector3.zero)
         {
-            lookRotation = Quaternion.LookRotation(rotateTarget, Vector3.up);
+            m_LookRotation = Quaternion.LookRotation(m_rotateTarget, Vector3.up);
         }
 
-        Vector3 rotation = Quaternion.RotateTowards(body.transform.rotation, lookRotation, turnSpeed * Time.fixedDeltaTime).eulerAngles;
-        body.transform.eulerAngles = rotation;
+        Vector3 rotation = Quaternion.RotateTowards(m_Body.transform.rotation, m_LookRotation, m_TurnSpeed * Time.fixedDeltaTime).eulerAngles;
+        m_Body.transform.eulerAngles = rotation;
+        float temp = m_Prevz;
 
-        float temp = prevz;
-        if(prevz < zturn)
+        if (m_Prevz < m_Zturn)
         {
-            prevz += Mathf.Min(turnSpeed * Time.fixedDeltaTime, zturn - prevz);
+            m_Prevz += Mathf.Min(m_TurnSpeed * Time.fixedDeltaTime, m_Zturn - m_Prevz);
         }
-        else if(prevz >= zturn)
+        else if (m_Prevz >= m_Zturn)
         {
-            prevz -= Mathf.Min(turnSpeed * Time.fixedDeltaTime, zturn - prevz);
-        }
-
-        prevz = Mathf.Clamp(prevz, -45f, 45f);
-        body.transform.Rotate(0f, 0f, prevz - temp, Space.Self);
-
-        direction = Quaternion.Euler(transform.eulerAngles) * Vector3.forward;
-        if(returnToBase && distanceFromBase < idleSpeed)
-        {
-            body.velocity = Mathf.Min(idleSpeed, distanceFromBase) * direction;
+            m_Prevz -= Mathf.Min(m_TurnSpeed * Time.fixedDeltaTime, m_Zturn - m_Prevz);
         }
 
-        body.velocity = Mathf.Lerp(prevSpeed, speed, Mathf.Clamp(timeSinceAnim / switchSeconds, 0f, 1f)) * direction;
+        m_Prevz = Mathf.Clamp(m_Prevz, -45f, 45f);
+        m_Body.transform.Rotate(0f, 0f, m_Prevz - temp, Space.Self);
 
-        if(body.transform.position.y < yMinMax.x || body.transform.position.y > yMinMax.y)
+        m_Direction = Quaternion.Euler(transform.eulerAngles) * Vector3.forward;
+
+        if (m_ReturnToBase && m_DistanceFromBase < m_IdleSpeed)
         {
-            position = body.transform.position;
-            position.y = Mathf.Clamp(position.y, yMinMax.x, yMinMax.y);
-            body.transform.position = position;
+            m_Body.velocity = Mathf.Min(m_IdleSpeed, m_DistanceFromBase) * m_Direction;
+        }
+
+        m_Body.velocity = Mathf.Lerp(m_PrevSpeed, m_Speed, Mathf.Clamp(m_TimeSinceAnim / m_SwitchSeconds, 0f, 1f)) * m_Direction;
+
+        if (m_Body.transform.position.y < m_YMinMax.x || m_Body.transform.position.y > m_YMinMax.y)
+        {
+            m_Position = m_Body.transform.position;
+            m_Position.y = Mathf.Clamp(m_Position.y, m_YMinMax.x, m_YMinMax.y);
+            m_Body.transform.position = m_Position;
         }
     }
 
-    private float ChangeAnim(float currAnim)
+    private float ChangeAnim(float i_CurrAnim)
     {
         float newState;
 
-        if(UnityEngine.Random.Range(0f, 1f) < idleRatio)
+        if (UnityEngine.Random.Range(0f, 1f) < m_IdleRatio)
         {
             newState = 0f;
         }
         else
         {
-            newState = UnityEngine.Random.Range(animSpeedMinMax.x, animSpeedMinMax.y);
+            newState = UnityEngine.Random.Range(m_AnimSpeedMinMax.x, m_AnimSpeedMinMax.y);
         }
 
-        if(newState != currAnim)
+        if (newState != i_CurrAnim)
         {
-            //animator.SetFloat("flySpeed", newState);
             if (newState == 0)
             {
-                animator.speed = 1f;
+                m_Animator.speed = 1f;
             }
             else
             {
-                animator.speed = newState;
+                m_Animator.speed = newState;
             }
         }
 
         return newState;
     }
 
-    private Vector3 changeDirection(Vector3 currPosition)
+    private Vector3 changeDirection(Vector3 i_CurrPosition)
     {
         Vector3 newDir;
 
-        if(returnToBase)
+        if (m_ReturnToBase)
         {
-            randomBase = homeTarget.position;
-            randomBase.y += UnityEngine.Random.Range(-randomBaseOffset, randomBaseOffset); 
-            newDir = randomBase -currPosition;
+            m_RandomBase = m_HomeTarget.position;
+            m_RandomBase.y += UnityEngine.Random.Range(-m_RandomBaseOffset, m_RandomBaseOffset); 
+            newDir = m_RandomBase - i_CurrPosition;
         }
-        else if(distanceFromTarget > radiusMinMax.y)
+        else if (m_DistanceFromTarget > m_RadiusMinMax.y)
         {
-            newDir = flyingTarget.position - currPosition;
+            newDir = m_FlyingTarget.position - i_CurrPosition;
         }
-        else if(distanceFromTarget < radiusMinMax.x)
+        else if (m_DistanceFromTarget < m_RadiusMinMax.x)
         {
-            newDir = currPosition - flyingTarget.position;
+            newDir = i_CurrPosition - m_FlyingTarget.position;
         }
         else
         {

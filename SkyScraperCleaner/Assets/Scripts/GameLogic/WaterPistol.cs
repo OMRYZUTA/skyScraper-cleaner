@@ -19,17 +19,17 @@ namespace Assets.Scripts.GameLogic
             m_Player.ReportWindowHit += Player_ReportWindowHit;
         }
 
-        private void Player_ReportWindowHit(GameObject obj)
+        private void Player_ReportWindowHit(GameObject i_Obj)
         {
             m_IsWindowHit = true;
         }
 
-        private void Player_ReportBuildingHit(GameObject obj)
+        private void Player_ReportBuildingHit(GameObject i_Obj)
         {
             m_IsWindowHit = false;
         }
 
-        private void M_Player_ReportBirdHit(GameObject obj)
+        private void M_Player_ReportBirdHit(GameObject i_Obj)
         {
             m_IsWindowHit = false;
         }

@@ -10,19 +10,19 @@ public class DirtyWindow : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        System.Random rand= new System.Random();
+        System.Random rand = new System.Random();
         m_NumOfHitsToClean = rand.Next(1, 3);
     }
 
-    void OnCollisionEnter(Collision collision)
+    void OnCollisionEnter(Collision i_Collision)
     {
         m_HitCounter++;
-        if(m_HitCounter == m_NumOfHitsToClean)
+
+        if (m_HitCounter == m_NumOfHitsToClean)
         {
             MeshRenderer myMesh = GetComponent<MeshRenderer>();
             myMesh.enabled = false;
             Destroy(this);
         }
     }
-
 }
