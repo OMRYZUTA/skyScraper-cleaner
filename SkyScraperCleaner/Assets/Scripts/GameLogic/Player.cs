@@ -87,7 +87,7 @@ public class Player : MonoBehaviour
     private void input()
     {
         RaycastHit hit;
-        Ray ray = Camera.main.ScreenPointToRay(new Vector3(0.9f*Screen.width / 4f,1.1f* Screen.height / 2f, 0));
+        Ray ray = Camera.main.ScreenPointToRay(new Vector3(/*0.9f* */ Screen.width / 2 /*4*/,/*1.1f**/ Screen.height / 2f, 0));
         if (Physics.Raycast(ray, out hit))
         {
 
@@ -141,7 +141,6 @@ public class Player : MonoBehaviour
 
     private void resetPosition()
     {
-        //transform.position = new Vector3(-28, 5, -12);
         Vector3 lookAt = new Vector3();
         lookAt = m_LookAtMeWindow.transform.position;
         lookAt.x -= 0.3f;
