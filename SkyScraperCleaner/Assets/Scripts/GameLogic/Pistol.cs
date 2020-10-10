@@ -7,7 +7,6 @@ public class Pistol : MonoBehaviour
     [SerializeField] private Player m_Player;
     [SerializeField] private GameObject m_Camera;
     [SerializeField] private GameObject m_Shot;
-
     private bool m_IsBirdHit;
 
     // Start is called before the first frame update
@@ -19,17 +18,17 @@ public class Pistol : MonoBehaviour
         m_Player.ReportWindowHit += Player_ReportWindowHit;
     }
 
-    private void Player_ReportBirdHit(GameObject obj)
+    private void Player_ReportBirdHit(GameObject i_Obj)
     {
         m_IsBirdHit = true;
     }
 
-    private void Player_ReportWindowHit(GameObject obj)
+    private void Player_ReportWindowHit(GameObject i_Obj)
     {
         m_IsBirdHit = false;
     }
 
-    private void Player_ReportBuildingHit(GameObject obj)
+    private void Player_ReportBuildingHit(GameObject i_Obj)
     {
         m_IsBirdHit = false;
     }
