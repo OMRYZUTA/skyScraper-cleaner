@@ -87,8 +87,8 @@ public class Player : MonoBehaviour
     private void input()
     {
         RaycastHit hit;
-         Ray ray = new Ray(Camera.main.transform.position,Camera.main.transform.forward);
-        
+        Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
+
         if (Physics.Raycast(ray, out hit))
         {
 
