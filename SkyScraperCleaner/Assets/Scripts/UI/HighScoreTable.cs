@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Globalization;
 using UnityEngine.UI;
 
 public class HighScoreTable : MonoBehaviour
@@ -141,7 +142,9 @@ public class HighScoreTable : MonoBehaviour
         public HighScoreEntry(int i_Score)
         {
             m_Score = i_Score;
-            m_Name = DateTime.Now.ToString();
+            DateTime localDateTime =DateTime.Now; 
+           var culture = new CultureInfo("en-GB");
+            m_Name = localDateTime.ToString(culture);
         }
     }
 }

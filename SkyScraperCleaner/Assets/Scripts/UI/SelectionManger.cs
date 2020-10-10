@@ -22,8 +22,7 @@ public class SelectionManger : MonoBehaviour
     void Update()
     {
         RaycastHit hit;
-        Ray ray = Camera.main.ScreenPointToRay(new Vector3(Screen.width / 4f,1.15f*Screen.height / 2f, 0));
-
+        Ray ray = new Ray(Camera.main.transform.position,Camera.main.transform.forward);
         if (Physics.Raycast(ray, out hit))
         {
             if (hit.rigidbody != null)

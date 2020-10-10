@@ -270,12 +270,12 @@ PrefabInstance:
     - target: {fileID: 5519911664128019603, guid: 6f8c8a7f886118546afcfeea0a5f452d,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0.07999999
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5519911664128019603, guid: 6f8c8a7f886118546afcfeea0a5f452d,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.007
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5519911664128019603, guid: 6f8c8a7f886118546afcfeea0a5f452d,
         type: 3}
@@ -322,31 +322,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: AimCanvas
       objectReference: {fileID: 0}
-    - target: {fileID: 5519911665316029809, guid: 6f8c8a7f886118546afcfeea0a5f452d,
-        type: 3}
-      propertyPath: m_Color.r
-      value: 0.754717
-      objectReference: {fileID: 0}
-    - target: {fileID: 5519911665316029809, guid: 6f8c8a7f886118546afcfeea0a5f452d,
-        type: 3}
-      propertyPath: m_Color.g
-      value: 0.32395872
-      objectReference: {fileID: 0}
-    - target: {fileID: 5519911665316029809, guid: 6f8c8a7f886118546afcfeea0a5f452d,
-        type: 3}
-      propertyPath: m_Color.b
-      value: 0.32395872
-      objectReference: {fileID: 0}
-    - target: {fileID: 5519911665316029810, guid: 6f8c8a7f886118546afcfeea0a5f452d,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -0.0745
-      objectReference: {fileID: 0}
-    - target: {fileID: 5519911665316029810, guid: 6f8c8a7f886118546afcfeea0a5f452d,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 1.0669
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f8c8a7f886118546afcfeea0a5f452d, type: 3}
 --- !u!224 &131899371 stripped
@@ -370,7 +345,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!215 &180963873
 ReflectionProbe:
@@ -511,7 +486,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!108 &240194753
 Light:
@@ -1338,7 +1313,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!108 &680466220
 Light:
@@ -1932,11 +1907,11 @@ GameObject:
   - component: {fileID: 984980639}
   - component: {fileID: 984980638}
   m_Layer: 0
-  m_Name: Area Light (1)
+  m_Name: Area Light2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!108 &984980638
 Light:
@@ -3854,7 +3829,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1819262898
 Transform:
@@ -4375,7 +4350,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!108 &2022115978
 Light:
